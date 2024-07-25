@@ -71,11 +71,11 @@ import Footer from '../components/Footer.astro';
       document.querySelector('.hamburger').addEventListener('click', () => {
         show = !show;
         if (show) {
-          document.querySelector('.nav-links').style.display = 'block'
+          document.querySelector('.nav-links').style.visibility = 'visible'
           
         } else {
 
-            document.querySelector('.nav-links').style.display = 'none'
+            document.querySelector('.nav-links').style.visibility = 'hidden'
         }
       });
     </script>
