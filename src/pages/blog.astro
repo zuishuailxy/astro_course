@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 // import Card from '../components/Card.astro';
+import Navigation from "../components/Navigation.astro";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -35,16 +36,18 @@ import Layout from "../layouts/Layout.astro";
         </svg>
         <h1 class="text-3xl font-bold underline">Blog</h1>
 
-        <nav>
-            <a href="/">首页</a>
-            <a class="ml-2" href="/about/">关于</a>
-            <a class="ml-2" href="/blog/">博客</a>
-        </nav>
+        <Navigation />
 
         <div class="instructions mt-2">
             <p>在这里，我将分享我的学习 Astro 之旅。</p>
-
+            
         </div>
+        
+        <ul>
+            <li><a href="/posts/post-1">Blog 1</a></li>
+            <li><a href="/posts/post-2">Blog 2</a></li>
+            <li><a href="/posts/post-3">Blog 3</a></li>
+        </ul>
     </main>
 </Layout>
 

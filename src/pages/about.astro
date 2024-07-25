@@ -1,6 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
-// import Card from '../components/Card.astro';
+import Navigation from "../components/Navigation.astro";
+import '../global.css';
+
+const pageTitle = "About Me";
+const identity = {
+    firstName: "Leo",
+    country: "China",
+    occupation: "技术撰稿人",
+    hobbies: ["摄影", "观鸟", "棒球"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const skillColor = "aqua";
+const textCase = "uppercase"
+const fontWeight = "bold"
 ---
 
 <Layout title="Welcome to Astro.">
@@ -33,27 +52,53 @@ import Layout from "../layouts/Layout.astro";
                 </linearGradient>
             </defs>
         </svg>
-        <h1 class="text-3xl font-bold underline">About <span class="text-gradient">Me</span></h1>
-
-        <nav>
-            <a href="/">首页</a>
-            <a class="ml-2" href="/about/">关于</a>
-            <a class="ml-2" href="/blog/">博客</a>
-        </nav> 
-
-        <div class="instructions">
-            <p>
-                我正在学习 Astro
-                的入门教程。这是我网站上的第二个页面，也是我自己建立的第一页面！
-            </p>
-            <p>
-                随着我完成更多教程，该站点将更新，所以请继续查看我的旅程将如何进行吧！
-            </p>
-        </div>
+        <h1 class="text-3xl font-bold underline">{pageTitle}</h1>
     </main>
+
+    <Navigation />
+
+    <div class="instructions text-white mt-2">
+        <p>以下是关于我的几个事实：</p>
+        <ul>
+            <li>我的名字是{identity.firstName}.</li>
+            <li>我住在{identity.country}。我的职业是{identity.occupation}。</li>
+            {
+                identity.hobbies.length >= 2 && (
+                    <li>
+                        我的两个习惯：{identity.hobbies[0]}和
+                        {identity.hobbies[1]}
+                    </li>
+                )
+            }
+        </ul>
+        <p>我的技能是：</p>
+        <ul>
+            {skills.map((skill) => <li class="skill">{skill}</li>)}
+        </ul>
+
+        {happy && <p>我非常乐意学习 Astro！</p>}
+
+        {finished && <p>我完成了这节教程！</p>}
+
+        {
+            goal === 3 ? (
+                <p>我的目标是在三天内完成。</p>
+            ) : (
+                <p>我的目标不是 3 天。</p>
+            )
+        }
+
+        <p class="mt-3">
+            我正在学习 Astro
+            的入门教程。这是我网站上的第二个页面，也是我自己建立的第一页面！
+        </p>
+        <p>
+            随着我完成更多教程，该站点将更新，所以请继续查看我的旅程将如何进行吧！
+        </p>
+    </div>
 </Layout>
 
-<style>
+<style define:vars={{skillColor, fontWeight, textCase}}>
     main {
         margin: auto;
         padding: 1rem;
@@ -95,5 +140,10 @@ import Layout from "../layouts/Layout.astro";
         );
         padding: 1.5rem;
         border-radius: 8px;
+    }
+    .skill {
+        color: var(--skillColor);
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
     }
 </style>
